@@ -1,0 +1,5 @@
+﻿  Card.cpp
+  Game.cpp
+C:\Users\User\Desktop\牛牛\Card\Card\Game.cpp(43,5): error C2143: 語法錯誤: 遺漏 ';' (在 '}' 之前)
+  main.cpp
+  正在產生程式碼...
