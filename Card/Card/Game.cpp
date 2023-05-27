@@ -3,17 +3,23 @@
 #include<iostream>
 using namespace std;
 
+int Game::round = 1;
+
+void Game::swapByReference(Card& c1, Card& c2)
+{
+    Card buffer;
+    buffer = c1;
+    c1 = c2;
+    c2 = buffer;
+}
 int Game::getRound()
 {
 	return round;
 }
-Card* Game::createDeck()
+
+void Game::createDeck()
 {
     cards = new Card[DECK_SIZE];
-    player1 = new Card[5];
-    player2 = new Card[5];
-    player3 = new Card[5];
-    winner = new Card[5];
     for (int i = 1; i <= 13; i++)
     {
         for (int j = 0; j < 4; j++)
@@ -21,11 +27,10 @@ Card* Game::createDeck()
             cards[j + (i - 1) * 4] = Card(i + (j + 1) * 0.1);
         }
     }
-    return cards;
 }
-void Game::Shuffle(int r)
+void Game::Shuffle()
 {
-    srand(r);
+    srand(time(0));
     for (int i = 0; i < 52; ++i)
     {
         int j = rand() % 52;
@@ -34,7 +39,7 @@ void Game::Shuffle(int r)
 }
 void Game::distribute()
 {
-    for (int i = 0; i < 20; i++)
+    /*for (int i = 0; i < 20; i++)
     {
         if (i < 5)
             player1[i] = cards[i];
@@ -44,23 +49,11 @@ void Game::distribute()
             player3[i - 10] = cards[i];
         else
             winner[i - 15] = cards[i];
-    }
+    }*/
 }
 void Game::printCard(int n)
 {
     cards[n].print();
-}
-Card* Game::getPlayer1()
-{
-    return player1;
-}
-Card* Game::getPlayer2()
-{
-    return player2;
-}
-Card* Game::getPlayer3()
-{
-    return player3;
 }
 Card* Game::getWinner()
 {

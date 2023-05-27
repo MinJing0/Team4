@@ -1,0 +1,12 @@
+player1:(1, h),(K,s),(7,h),(K,h),(3,s)
+player2:(10,D),(7,c),(10,h),(1,h),(1,c)
+player3:(6, s),(J,d),(5,d),(8,c),(2,c)
+player4:(3, d),(5,c),(4,d),(6,h),(2,s)
+---------------------
+player1 牛10
+player2 牛0
+player3 牛1
+player4 牛10
+---------------------
+winner is player4
+winner 10場的勝率為 60%
