@@ -10,6 +10,7 @@ using namespace std;
 class Game
 {
 private:
+	Player player[3];
 	static int round;
 	string winter;
 	Card* winner;

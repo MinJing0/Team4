@@ -39,17 +39,17 @@ void Game::Shuffle()
 }
 void Game::distribute()
 {
-    /*for (int i = 0; i < 20; i++)
+    Card* c = new Card[5];
+    int k = 0;
+    for (int j = 0; j < 3; ++j)
     {
-        if (i < 5)
-            player1[i] = cards[i];
-        else if (i >= 5 && i < 10)
-            player2[i - 5] = cards[i];
-        else if (i >= 10 && i < 15)
-            player3[i - 10] = cards[i];
-        else
-            winner[i - 15] = cards[i];
-    }*/
+        for (int i = 0; i < 5; ++i)
+        {
+            c[i] = cards[k];
+            k++;
+        }
+        player[j].setCards(c);
+    }
 }
 void Game::printCard(int n)
 {

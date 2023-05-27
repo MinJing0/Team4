@@ -8,7 +8,7 @@ private:
 	Card * cards;
 public:
 	Player();
-	Player(Card*);
+	void setCards(Card*);
 	Player* getPlayer();
 };
 #endif
