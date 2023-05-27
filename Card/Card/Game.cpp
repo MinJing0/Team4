@@ -49,7 +49,14 @@ void Game::distribute()
             k++;
         }
         player[j].setCards(c);
+    }//發給兩名電腦
+
+    for (int i = 0; i < 5; ++i)
+    {
+        c[i] = cards[k];
+        k++;
     }
+    boss.setCards(c);//發給一名莊家
 }
 void Game::printCard(int n)
 {
@@ -68,7 +75,28 @@ void Game::show(Card* player)
     }
     cout << "----------" << endl;
 }
-void Game::compare()
-{
-
-}
+//void Game::compare()
+//{
+//
+//}
+//void Game::calculatePlayer(Player player)
+//{
+//    int modNum = 0;
+//    int sumOfThree = player.getCards()[0].getIntSymbol() + player.getCards()[1].getIntSymbol() + player.getCards()[2].getIntSymbol();
+//    int LastTwo = player.getCards()[3].getIntSymbol() + player.getCards()[4].getIntSymbol();
+//    int sumOfAll = player.getCards()[0].getIntSymbol() + player.getCards()[1].getIntSymbol() + player.getCards()[2].getIntSymbol()+player.getCards()[3].getIntSymbol() + player.getCards()[4].getIntSymbol();
+//    
+//    if (sumOfThree % 10 == 0)
+//    {
+//        if (LastTwo % 10 == 0)
+//            player.compareSize = 5;
+//        else
+//        {
+//            modNum = sumOfAll % 10;
+//            
+//        }
+//            
+//    }
+//    else
+//
+//}

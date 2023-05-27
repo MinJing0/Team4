@@ -8,8 +8,8 @@ void Player::setCards(Card* cards)
 {
     this->cards = cards;
 }
+Card* Player::getCards()
+{
+    return cards;
+}
 
-//Card* Player::getPlayer()
-//{
-//    return player;
-//}

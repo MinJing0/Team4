@@ -6,9 +6,11 @@ class Player
 {
 private:
 	Card * cards;
+	
 public:
 	Player();
 	void setCards(Card*);
-	Player* getPlayer();
+	Card* getCards();
+	int compareSize;
 };
 #endif

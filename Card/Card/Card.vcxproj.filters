@@ -27,9 +27,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="Pc.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h">
@@ -39,9 +36,6 @@
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="Pc.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="Boss.cpp">

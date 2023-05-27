@@ -9,4 +9,5 @@ int main()
 {
 	Game game;
 	game.createDeck();
+	game.Shuffle();
 }

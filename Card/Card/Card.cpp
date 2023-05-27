@@ -32,3 +32,7 @@ double Card::getCard()
 {
 	return card;
 }
+int Card::getIntSymbol()
+{
+	return symbol;
+}

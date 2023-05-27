@@ -3,7 +3,6 @@
 #include<string>
 #include"Card.h"
 #include"Boss.h"
-#include"Pc.h"
 #include"Player.h"
 using namespace std;
 
@@ -11,6 +10,7 @@ class Game
 {
 private:
 	Player player[3];
+	Boss boss;
 	static int round;
 	string winter;
 	Card* winner;
@@ -26,6 +26,8 @@ public:
 	Card* getWinner();
 	void show(Card*);
 	void compare();
+	void calculatePlayer(Player);
+	void calculateBoss(Boss);
 };
 
 #endif

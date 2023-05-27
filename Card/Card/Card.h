@@ -8,7 +8,7 @@ class Card
 {
 private:
     vector<string> St = { "Club", "Diamond", "Heart", "Spade" };
-    vector<string> Sl = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+    vector<string> Sl = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "10", "10", "10" };
     int suit;
     int symbol;
     double card;
@@ -20,6 +20,7 @@ public:
     void print();
     void setCard(double);
     double getCard();
+    int getIntSymbol();
 };
 
 #endif
