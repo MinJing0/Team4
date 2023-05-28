@@ -3,10 +3,11 @@
 #include<string>
 #include"Card.h"
 #include"Player.h"
+#include"Print.h"
 #include"PC.h"
 using namespace std;
 
-class Game
+class Game: public Print
 {
 private:
 	Player player[3];
