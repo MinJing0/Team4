@@ -11,6 +11,5 @@ public:
 	Player();
 	void setCards(Card*);
 	Card* getCards();
-	int compareSize;
 };
 #endif

@@ -56,7 +56,7 @@ void Game::distribute()
         c[i] = cards[k];
         k++;
     }
-    boss.setCards(c);//發給一名莊家
+    //boss.setCards(c);//發給一名莊家
 }
 void Game::printCard(int n)
 {

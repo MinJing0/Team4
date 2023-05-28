@@ -2,15 +2,15 @@
 #define G_H
 #include<string>
 #include"Card.h"
-#include"Boss.h"
 #include"Player.h"
+#include"PC.h"
 using namespace std;
 
 class Game
 {
 private:
 	Player player[3];
-	Boss boss;
+	PC pc;
 	static int round;
 	string winter;
 	Card* winner;
@@ -25,9 +25,9 @@ public:
 	void printCard(int);
 	Card* getWinner();
 	void show(Card*);
-	void compare();
+	/*void compare();
 	void calculatePlayer(Player);
-	void calculateBoss(Boss);
+	void calculateBoss(Boss);*/
 };
 
 #endif
