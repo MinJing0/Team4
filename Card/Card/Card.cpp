@@ -11,28 +11,21 @@ Card::Card(double card)
 	symbol = int(card);
 	suit = int(card * 10) % 10;
 }
-string Card::getSuit()
+int Card::getSuit()
 {
-	return St[suit - 1];
+	return suit;
 }
-string Card::getSymbol()
+int Card::getSymbol()
 {
-	return Sl[symbol - 1];
+	return symbol;
 }
-void Card::print()
-{
-	cout << "Symbol: " << getSymbol() << endl;
-	cout << "Suit: " << getSuit() << endl;
-}
+
 void Card::setCard(double card)
 {
 	this->card = card;
 }
+
 double Card::getCard()
 {
 	return card;
-}
-int Card::getIntSymbol()
-{
-	return symbol;
 }
