@@ -128,14 +128,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardStyle.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PC.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Print.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardStyle.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="PC.h" />
     <ClInclude Include="Player.h" />

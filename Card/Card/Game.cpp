@@ -75,6 +75,7 @@ void Game::show(Card* player)
     }
     cout << "----------" << endl;
 }
+
 //void Game::compare()
 //{
 //

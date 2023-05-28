@@ -33,6 +33,12 @@
     <ClCompile Include="Print.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="CardStyle.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h">
@@ -48,6 +54,9 @@
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="Print.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="CardStyle.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
