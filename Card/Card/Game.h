@@ -23,7 +23,6 @@ public:
 	void createDeck();
 	void Shuffle();
 	void distribute();
-	void printCard(int);
 	Card* getWinner();
 	void show(Card*);
 	/*void compare();

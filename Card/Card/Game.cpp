@@ -58,10 +58,7 @@ void Game::distribute()
     }
     pc.setCards(c);//發給電腦
 }
-void Game::printCard(int n)
-{
-    cards[n].print();
-}
+
 Card* Game::getWinner()
 {
     return winner;
