@@ -79,13 +79,27 @@ void CardStyle::checkTwo()
         int sum = 0;
         int sum2 = 0;
         for (int j = 0; j < 3; j++) 
+        {
+            if(arr[i][j] > 10)
+            {
+                sum += 10;
+                continue;
+            }
             sum += arr[i][j];
+        }
         for(int j = 3; j < 5; j++)
+        {
+            if(arr[i][j] > 10)
+            {
+                sum2 += 10;
+                continue;
+            }
             sum2 += arr[i][j];
+        }
         if (sum % 10 == 0 && sum2 % 10 == 0)
         {
             for(int j = 0; j < 5; j++)
-                final[i] = arr[i][j];
+                final[j] = arr[i][j];
             haveFinal = 1;
             cStyle = 3;
         }
@@ -135,6 +149,14 @@ void CardStyle::checkOne()
     cStyle = 2;
 }
 
+// void CardStyle::poorCard()
+// {
+//     for(int i = 0; i < 5; i++)
+//     {
+//         if(arr[0][i] > 10)
+//     }
+// }
+
 bool CardStyle::have_Final()
 {
     return haveFinal;
@@ -162,4 +184,5 @@ void CardStyle::print()
     for(int i = 0; i < 5; ++i)
         cout << final[i] << " ";
     cout << endl;
+    cout << "cStyle: " << cStyle << endl;
 }
