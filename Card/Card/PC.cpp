@@ -7,7 +7,8 @@ PC::PC()
 
 void PC::setCards(Card* cards)
 {
-    this->cards = cards;
+    for(int i = 0; i < 5; ++i)
+        this->cards[i] = cards[i];
 }
 
 Card* PC::getCards()
