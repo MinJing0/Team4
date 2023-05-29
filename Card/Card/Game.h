@@ -23,6 +23,9 @@ public:
 	void Shuffle();
 	void giveCard();
 	Card* getWinner();
+	Player& getPlayer(int);
+	PC& getPC();
+	
 	void show(Card*);
 	
 };
