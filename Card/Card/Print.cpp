@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 #include "Print.h"
@@ -49,4 +49,51 @@ void Print::rule()
     cout << "(按 Enter 繼續)" << endl;
     cin.get();
     system("cls");
+}
+
+void Print::playerHandCard(Player& p, int index, Card* c)
+{
+    cout << "Player " << index+1 << "手牌：";
+    for(int i = 0; i < 5; ++i)
+        cout << c[i].get_str_suit() << c[i].get_str_symbol() << " ";
+    cout << endl;
+    if(p.getCstyle() == 4)
+        cout << "恭喜你終極妞妞！！！賭大一點吧！！！\n";
+    else if(p.getCstyle() == 3)
+        cout << "恭喜你妞妞！！！機會難得 賭了吧！！！\n";
+    else if(p.getCstyle() == 2)
+        cout << "有妞～～～\n";
+    else if(p.getCstyle() == 1)
+        cout << "無妞QQ 下次燒香拜佛吧\n";
+    else
+        cout << "烏龍TAT 你不要再玩比較好\n";
+    cout << endl;
+}
+
+void Print::pcHandCard(PC& pc, Card* c)
+{
+    cout << "電腦的牌是：";
+    for(int i = 0; i < 5; ++i)
+        cout << c[i].get_str_suit() << c[i].get_str_symbol() << " ";
+    cout << endl;
+    if(pc.getCstyle() == 4)
+        cout << "是終極妞妞！！！\n";
+    else if(pc.getCstyle() == 3)
+        cout << "是妞妞！！！\n";
+    else if(pc.getCstyle() == 2)
+        cout << "有妞!\n";
+    else if(pc.getCstyle() == 1)
+        cout << "無妞QQ\n";
+    else
+        cout << "烏龍TAT\n";
+    cout << endl;
+}
+
+void Print::win(Player& p, int index)
+{
+    index++;
+    if(p.getWin())
+        cout << "Player " << index << " 你贏了\n";
+    else
+        cout << "Player " << index << " 你輸了\n";
 }
