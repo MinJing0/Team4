@@ -13,17 +13,20 @@ private:
     int arrIndex;
     bool haveFinal;
     int cStyle; // 定義牌型
-public:
-    CardStyle();
-    int getCombinationSize() const;
-    void setCards(double []);
-    void generateCombinations(int, int);
+
+    // check function
     void checkSuper(); // 查看有沒有終極妞妞 -> cStyle <= 4
     void checkTwo(); // 查看有沒有妞妞 -> cStyle <= 3
     void checkOne(); // 查看有沒有妞 -> cStyle <= 2
     void poorCard(); // 無妞 -> cStyle <= 1
     void realPoor(); // 烏龍 -> cStyle <= 0
-    bool have_Final();
+
+public:
+    CardStyle();
+    int getCombinationSize() const;
+    void setCards(double []);
+    void generateCombinations(int, int);
+    void checkStyle(); // 檢查牌型屬於何者
     double* getFinal();
     int getCstyle();
 
