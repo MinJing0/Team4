@@ -11,6 +11,16 @@ void PC::setCards(Card* cards)
         this->cards[i] = cards[i];
 }
 
+void PC::setCstyle(int v)
+{
+    cStyle = v;
+}
+
+int PC::getCstyle()
+{
+    return cStyle;
+}
+
 Card* PC::getCards()
 {
     return cards;
