@@ -5,7 +5,6 @@ using namespace std;
 
 CardStyle::CardStyle()
 {
-    cards = new double[5];
     combinationSize = 3;
     MAX_COMBINATIONS = 10;
     haveFinal = 0;
@@ -18,7 +17,8 @@ int CardStyle::getCombinationSize() const
 
 void CardStyle::setCards(double cards[])
 {
-    this->cards = cards;
+    for(int i = 0; i < 5; ++i)
+        this->cards[i] = cards[i];
 }
 
 void CardStyle::generateCombinations(int startIndex, int currentIndex)
