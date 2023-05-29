@@ -10,7 +10,8 @@ using namespace std;
 
 int main() {
     CardStyle t;
-    double cards[5] = { 11.1, 11.2, 12.1, 11.4, 12.2 };
+    // double cards[5] = { 12.4, 13.4, 11.3, 12.3, 12.1 };
+    double cards[5] = { 1.3, 13.4, 7.3, 13.3, 3.4 };
     t.setCards(cards);
 
     // int passComb[10][5];
@@ -21,7 +22,12 @@ int main() {
 
     // 呼叫 generateCombinations 函數生成所有可能的組合
     t.generateCombinations(0, 0);
+
     t.checkSuper();
+    if (!t.have_Final())
+        // t.checkTwo();
+        if (!t.have_Final())
+            t.checkOne();
 
     t.print();
 
