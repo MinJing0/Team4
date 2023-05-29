@@ -13,8 +13,6 @@ private:
 	Player player[3];
 	PC pc;
 	static int round;
-	string winter;
-	Card* winner;
 	Card* cards;
 	static const int DECK_SIZE = 52;
 	void swapByReference(Card&, Card&);
@@ -25,7 +23,7 @@ public:
 	Card* getWinner();
 	Player& getPlayer(int);
 	PC& getPC();
-	
+	void compare(Player&);
 	void show(Card*);
 	
 };
