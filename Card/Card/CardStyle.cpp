@@ -61,12 +61,13 @@ void CardStyle::generateCombinations(int startIndex, int currentIndex)
 
 void CardStyle::checkSuper()
 {
-    for (int i = 0; i < 5; ++i)
-        if (arr[0][i] < 11)
+    for(int i = 0; i < 5; ++i)
+        if(arr[0][i] < 11)
             return;
-    for (int i = 0; i < 5; ++i)
+    for(int i = 0; i < 5; ++i)
         final[i] = arr[0][i];
     haveFinal = 1;
+    cStyle = 4;
 }
 
 void CardStyle::checkTwo()
@@ -86,6 +87,7 @@ void CardStyle::checkTwo()
             for(int j = 0; j < 5; j++)
                 final[i] = arr[i][j];
             haveFinal = 1;
+            cStyle = 3;
         }
     }
 }
@@ -95,12 +97,12 @@ void CardStyle::checkOne()
     double passComb[10][5];
     int num__comb = 0;
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++) 
     {
         int sum = 0;
         for (int j = 0; j < 3; j++)
         {
-            if (arr[i][j] > 10)
+            if(arr[i][j] > 10)
             {
                 sum += 10;
                 continue;
@@ -115,20 +117,22 @@ void CardStyle::checkOne()
         }
     }
 
-    if (num__comb > 1)
+    if(num__comb > 1)
     {
         int maxi = 0;
-        for (int i = 1; i < num__comb; ++i)
+        for(int i = 1; i < num__comb; ++i)
         {
-            if (int(passComb[i][3] + passComb[i][4]) % 10 > int(passComb[maxi][3] + passComb[maxi][4]) % 10)
+            if(int(passComb[i][3] + passComb[i][4])%10 > int(passComb[maxi][3] + passComb[maxi][4])%10)
                 maxi = i;
         }
-        for (int i = 0; i < 5; ++i)
+        for(int i = 0; i < 5; ++i)
             final[i] = passComb[maxi][i];
         return;
     }
-    for (int i = 0; i < 5; ++i)
+    for(int i = 0; i < 5; ++i)
         final[i] = passComb[0][i];
+    haveFinal = 1;
+    cStyle = 2;
 }
 
 bool CardStyle::have_Final()
@@ -141,16 +145,21 @@ double* CardStyle::getFinal()
     return final;
 }
 
+int CardStyle::getCstyle()
+{
+    return cStyle;
+}
+
 void CardStyle::print()
 {
-    for (int i = 0; i < 10; ++i)
+    for(int i = 0; i < 10; ++i)
     {
-        for (int j = 0; j < 5; ++j)
+        for(int j = 0; j < 5; ++j)
             cout << arr[i][j] << " ";
         cout << endl;
     }
     cout << "------------------------------\n";
-    for (int i = 0; i < 5; ++i)
+    for(int i = 0; i < 5; ++i)
         cout << final[i] << " ";
     cout << endl;
 }
