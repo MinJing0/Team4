@@ -131,6 +131,10 @@ void CardStyle::checkOne()
         }
     }
 
+    // 代表無妞
+    if(num__comb == 0)
+        return;
+
     if(num__comb > 1)
     {
         int maxi = 0;
@@ -151,13 +155,25 @@ void CardStyle::checkOne()
     cStyle = 2;
 }
 
-// void CardStyle::poorCard()
-// {
-//     for(int i = 0; i < 5; i++)
-//     {
-//         if(arr[0][i] > 10)
-//     }
-// }
+void CardStyle::checkPoor()
+{
+    /*
+        直接存進去，不管無妞還是烏龍的牌組都是一樣，
+        最後再判斷是無妞還是烏龍，這種方法可以提升效率
+    */ 
+    for(int i = 0; i < 5; ++i)
+        final[i] = arr[0][i];
+    for(int i = 0; i < 5; i++)
+    {
+        if(arr[0][i] > 10)
+        {
+            haveFinal = 1;
+            cStyle = 1;
+        }
+    }
+    if(!haveFinal)
+        cStyle = 0;
+}
 
 void CardStyle::checkStyle()
 {
@@ -168,7 +184,10 @@ void CardStyle::checkStyle()
         if(!haveFinal)
         {
             checkOne();
+            if(!haveFinal)
+                checkPoor();
         }
+        
     }
 }
 
