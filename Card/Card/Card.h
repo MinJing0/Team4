@@ -1,6 +1,5 @@
 #ifndef C_H
 #define C_H
-#include <vector>
 #include <string>
 using namespace std;
 
@@ -17,6 +16,8 @@ public:
     int getSymbol();
     void setCard(double);
     double getCard();
+    string get_str_suit();
+    string get_str_symbol();
 };
 
 #endif
