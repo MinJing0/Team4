@@ -59,6 +59,17 @@ Card* Game::getWinner()
 {
     return winner;
 }
+
+Player& Game::getPlayer(int index)
+{
+    return player[index];
+}
+
+PC& Game::getPC()
+{
+    return pc;
+}
+
 void Game::show(Card* player)
 {
     for (int i = 0; i < 5; i++)
