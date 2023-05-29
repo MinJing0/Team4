@@ -23,16 +23,16 @@ void CardStyle::setCards(double cards[])
 
 void CardStyle::generateCombinations(int startIndex, int currentIndex)
 {
-    // ¦pªG¤w¸g¹F¨ì²Õ¦X¤j¤p¡A«h¿é¥X²Õ¦X
+    // å¦‚æœå·²ç¶“é”åˆ°çµ„åˆå¤§å°ï¼Œå‰‡è¼¸å‡ºçµ„åˆ
     if (currentIndex == combinationSize) {
         int currentArrIndex = arrIndex;
 
-        // Àx¦s²Õ¦X
+        // å„²å­˜çµ„åˆ
         for (int i = 0; i < combinationSize; i++) {
             arr[currentArrIndex][i] = buffer[i];
         }
 
-        // Àx¦s³Ñ¤UªºµP
+        // å„²å­˜å‰©ä¸‹çš„ç‰Œ
         int remainingIndex = combinationSize;
         for (int i = 0; i < 5; i++) {
             bool isUsed = false;
@@ -48,11 +48,11 @@ void CardStyle::generateCombinations(int startIndex, int currentIndex)
             }
         }
 
-        arrIndex++; // ¼W¥[ arr ¯Á¤Ş
+        arrIndex++; // å¢åŠ  arr ç´¢å¼•
         return;
     }
 
-    // »¼°j¥Í¦¨²Õ¦X
+    // éè¿´ç”Ÿæˆçµ„åˆ
     for (int i = startIndex; i <= 5 - combinationSize + currentIndex; i++) {
         buffer[currentIndex] = cards[i];
         generateCombinations(i + 1, currentIndex + 1);
@@ -69,20 +69,26 @@ void CardStyle::checkSuper()
     haveFinal = 1;
 }
 
-// void CardStyle::checkTwo()
-// {
-//     int num__comb = 0;
-//     for (int i = 0; i < 10; i++) 
-//     {
-//         int sum = 0;
-//         for (int j = 0; j < 3; j++) 
-//             sum += arr[i][j];
-//         if (sum % 10 == 0)
-//         {
-//             isTwo = 1;
-//         }
-//     }
-// }
+void CardStyle::checkTwo()
+{
+    double passComb[10][5];
+    int num__comb = 0;
+    for (int i = 0; i < 10; i++) 
+    {
+        int sum = 0;
+        int sum2 = 0;
+        for (int j = 0; j < 3; j++) 
+            sum += arr[i][j];
+        for(int j = 3; j < 5; j++)
+            sum2 += arr[i][j];
+        if (sum % 10 == 0 && sum2 % 10 == 0)
+        {
+            for(int j = 0; j < 5; j++)
+                final[i] = arr[i][j];
+            haveFinal = 1;
+        }
+    }
+}
 
 void CardStyle::checkOne()
 {
