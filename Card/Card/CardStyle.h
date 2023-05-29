@@ -4,7 +4,7 @@
 class CardStyle
 {
 private:
-    double *cards;
+    double cards[5];
     double buffer[5]; // 儲存組合的陣列
     double final[5]; // 儲存最後找到的最好牌
     double arr[10][5]; // 儲存所有牌的組合
