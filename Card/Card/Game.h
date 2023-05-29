@@ -19,15 +19,12 @@ private:
 	static const int DECK_SIZE = 52;
 	void swapByReference(Card&, Card&);
 public:
-	int getRound();
 	void createDeck();
 	void Shuffle();
-	void distribute();
+	void giveCard();
 	Card* getWinner();
 	void show(Card*);
-	/*void compare();
-	void calculatePlayer(Player);
-	void calculateBoss(Boss);*/
+	
 };
 
 #endif
