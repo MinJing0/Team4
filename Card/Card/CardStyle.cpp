@@ -141,6 +141,8 @@ void CardStyle::checkOne()
         }
         for(int i = 0; i < 5; ++i)
             final[i] = passComb[maxi][i];
+        haveFinal = 1;
+        cStyle = 2;
         return;
     }
     for(int i = 0; i < 5; ++i)
