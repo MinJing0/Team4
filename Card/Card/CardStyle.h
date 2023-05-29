@@ -18,8 +18,7 @@ private:
     void checkSuper(); // 查看有沒有終極妞妞 -> cStyle <= 4
     void checkTwo(); // 查看有沒有妞妞 -> cStyle <= 3
     void checkOne(); // 查看有沒有妞 -> cStyle <= 2
-    void poorCard(); // 無妞 -> cStyle <= 1
-    void realPoor(); // 烏龍 -> cStyle <= 0
+    void checkPoor(); // 無妞 -> cStyle <= 1, 烏龍 -> cStyle <= 0
 
 public:
     CardStyle();
