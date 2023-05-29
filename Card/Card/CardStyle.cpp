@@ -159,9 +159,17 @@ void CardStyle::checkOne()
 //     }
 // }
 
-bool CardStyle::have_Final()
+void CardStyle::checkStyle()
 {
-    return haveFinal;
+    checkSuper();
+    if(!haveFinal)
+    {
+        checkTwo();
+        if(!haveFinal)
+        {
+            checkOne();
+        }
+    }
 }
 
 double* CardStyle::getFinal()
