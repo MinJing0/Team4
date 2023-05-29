@@ -13,4 +13,4 @@ public:
 	void setCards(Card*);
 	Card* getCards();
 };
-#endif;
+#endif
