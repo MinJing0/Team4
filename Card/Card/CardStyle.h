@@ -7,33 +7,33 @@ class CardStyle
 {
 private:
     Card cards[5];
-    Card buffer[5]; // å„²å­˜çµ„åˆçš„é™£åˆ—
-    Card final[5]; // å„²å­˜æœ€å¾Œæ‰¾åˆ°çš„æœ€å¥½ç‰Œ
-    Card arr[10][5]; // å„²å­˜æ‰€æœ‰ç‰Œçš„çµ„åˆ
-    int combinationSize; // æŒ‘é¸çš„ç‰Œæ•¸
-    int MAX_COMBINATIONS; // æœ€å¤§çµ„åˆæ•¸
+    Card buffer[5]; // Àx¦s²Õ¦Xªº°}¦C
+    Card final[5]; // Àx¦s³Ì«á§ä¨ìªº³Ì¦nµP
+    Card arr[10][5]; // Àx¦s©Ò¦³µPªº²Õ¦X
+    int combinationSize; // ¬D¿ïªºµP¼Æ
+    int MAX_COMBINATIONS; // ³Ì¤j²Õ¦X¼Æ
     int arrIndex;
     bool haveFinal;
-    int cStyle; // å®šç¾©ç‰Œåž‹
+    int cStyle; // ©w¸qµP«¬
 
     // check function
-    void checkSuper(); // æŸ¥çœ‹æœ‰æ²’æœ‰çµ‚æ¥µå¦žå¦ž -> cStyle <= 4
-    void checkTwo(); // æŸ¥çœ‹æœ‰æ²’æœ‰å¦žå¦ž -> cStyle <= 3
-    void checkOne(); // æŸ¥çœ‹æœ‰æ²’æœ‰å¦ž -> cStyle <= 2
-    void checkPoor(); // ç„¡å¦ž -> cStyle <= 1, çƒé¾ -> cStyle <= 0
+    void checkSuper(); // ¬d¬Ý¦³¨S¦³²×·¥§¬§¬ -> cStyle <= 4
+    void checkTwo(); // ¬d¬Ý¦³¨S¦³§¬§¬ -> cStyle <= 3
+    void checkOne(); // ¬d¬Ý¦³¨S¦³§¬ -> cStyle <= 2
+    void checkPoor(); // µL§¬ -> cStyle <= 1, ¯QÀs -> cStyle <= 0
 
 public:
     CardStyle();
     int getCombinationSize() const;
-    void setCards(Card []);
+    void setCards(Card[]);
     void generateCombinations();
-    void checkStyle(); // æª¢æŸ¥ç‰Œåž‹å±¬æ–¼ä½•è€…
+    void checkStyle(); // ÀË¬dµP«¬ÄÝ©ó¦óªÌ
     Card* getFinal();
     int getCstyle();
     Card* getCards();
 
     // test
-    void print();         
+    void print();
 };
 
 #endif

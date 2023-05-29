@@ -7,67 +7,67 @@ using namespace std;
 int main()
 {
 	Game game;
-	// é¡¯ç¤ºæ­¡è¿åŠè¦å‰‡
+	// Åã¥ÜÅwªï¤Î³W«h
 	game.welcome();
 	game.gamePlay();
 	game.rule();
 
-	// åˆå§‹åŒ–æ¡Œé¢(æ‹¿åˆ°æ•´å‰¯æ’²å…‹ç‰Œ)
+	// ªì©l¤Æ®à­±(®³¨ì¾ã°Æ¼³§JµP)
 	game.createDeck();
 
-	// æ´—ç‰Œ
+	// ¬~µP
 	game.Shuffle();
-	// å°‡ç‰Œçµ¦3å€‹ç©å®¶åŠèŠå®¶(é›»è…¦)
+	// ±NµPµ¹3­Óª±®a¤Î²ø®a(¹q¸£)
 	game.giveCard();
-	
+
 	CardStyle cs;
-	Card *c = new Card[5];
+	Card* c = new Card[5];
 	int cStyle;
-	for(int i = 0; i < 3; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
-		// é‡æ•´ cs
+		// ­«¾ã cs
 		cs = CardStyle();
-		// æŠŠç©å®¶çš„ç‰Œå­˜åˆ° c
+		// §âª±®aªºµP¦s¨ì c
 		c = game.getPlayer(i).getCards();
-		// æŠŠç©å®¶çš„ç‰Œå­˜åˆ° cs
+		// §âª±®aªºµP¦s¨ì cs
 		cs.setCards(c);
-		
-		// è·‘æ‰€æœ‰çš„çµ„åˆ
+
+		// ¶]©Ò¦³ªº²Õ¦X
 		cs.generateCombinations();
-		// åˆ¤æ–·ç©å®¶æœ€ä½³ç‰Œå‹åŠçµ„åˆ
+		// §PÂ_ª±®a³Ì¨ÎµP«¬¤Î²Õ¦X
 		cs.checkStyle();
-		// å›å‚³æœ€ä½³çµ„åˆçµ¦ c
+		// ¦^¶Ç³Ì¨Î²Õ¦Xµ¹ c
 		c = cs.getFinal();
-		// å°‡æœ€ä½³çµ„åˆæ”¾å›ç©å®¶æ‰‹ç‰Œ
+		// ±N³Ì¨Î²Õ¦X©ñ¦^ª±®a¤âµP
 		game.getPlayer(i).setCards(c);
-		// å°‡ç‰Œå‹å­˜åˆ°ç©å®¶ç‰©ä»¶è£¡é ­
+		// ±NµP«¬¦s¨ìª±®aª«¥ó¸ÌÀY
 		game.getPlayer(i).setCstyle(cs.getCstyle());
 	}
 
 	/*
-	 * å°‡é›»è…¦çš„ç‰Œçµ„æ’æˆæœ€ä½³çµ„åˆ
-	 * è¨­å®šé›»è…¦æœ€ä½³ç‰Œçµ„çš„çµ„åˆç‰Œå‹
+	 * ±N¹q¸£ªºµP²Õ±Æ¦¨³Ì¨Î²Õ¦X
+	 * ³]©w¹q¸£³Ì¨ÎµP²Õªº²Õ¦XµP«¬
 	*/
-	
-	// é‡æ•´ cs
+
+	// ­«¾ã cs
 	cs = CardStyle();
-	// æŠŠé›»è…¦çš„ç‰Œå­˜åˆ° c
+	// §â¹q¸£ªºµP¦s¨ì c
 	c = game.getPC().getCards();
-	// æŠŠé›»è…¦çš„ç‰Œå­˜åˆ° cs
+	// §â¹q¸£ªºµP¦s¨ì cs
 	cs.setCards(c);
-	
-	// è·‘æ‰€æœ‰çš„çµ„åˆ
+
+	// ¶]©Ò¦³ªº²Õ¦X
 	cs.generateCombinations();
-	// åˆ¤æ–·é›»è…¦æœ€ä½³ç‰Œå‹åŠçµ„åˆ
+	// §PÂ_¹q¸£³Ì¨ÎµP«¬¤Î²Õ¦X
 	cs.checkStyle();
-	// å›å‚³æœ€ä½³çµ„åˆçµ¦ c
+	// ¦^¶Ç³Ì¨Î²Õ¦Xµ¹ c
 	c = cs.getFinal();
-	// å°‡æœ€ä½³çµ„åˆæ”¾å›é›»è…¦æ‰‹ç‰Œ
+	// ±N³Ì¨Î²Õ¦X©ñ¦^¹q¸£¤âµP
 	game.getPC().setCards(c);
-	// å°‡ç‰Œå‹å­˜åˆ°é›»è…¦ç‰©ä»¶è£¡é ­
+	// ±NµP«¬¦s¨ì¹q¸£ª«¥ó¸ÌÀY
 	game.getPC().setCstyle(cs.getCstyle());
 
-	for(int i = 0; i < 3; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
 		c = game.getPlayer(i).getCards();
 		game.playerHandCard(game.getPlayer(i), i, c);
@@ -76,7 +76,7 @@ int main()
 	c = game.getPC().getCards();
 	game.pcHandCard(game.getPC(), c);
 
-	for(int i = 0; i < 3; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
 		game.compare(game.getPlayer(i));
 		game.win(game.getPlayer(i), i);

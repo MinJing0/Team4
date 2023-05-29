@@ -1,4 +1,4 @@
-#include"Card.h"
+﻿#include"Card.h"
 #include<iostream>
 #include<sstream>
 using namespace std;
@@ -33,26 +33,26 @@ double Card::getCard()
 
 string Card::get_str_suit()
 {
-	if(getSuit() == 4)
-		return "♠";
-	if(getSuit() == 3)
-		return "♥";
-	if(getSuit() == 2)
-		return "♦";
-	return "♣";
+	if (getSuit() == 4)
+		return "黑桃";
+	if (getSuit() == 3)
+		return "紅心";
+	if (getSuit() == 2)
+		return "方塊";
+	return "梅花";
 }
 
 string Card::get_str_symbol()
 {
-	if(getSymbol() == 13)
+	if (getSymbol() == 13)
 		return "K";
-	if(getSymbol() == 12)
+	if (getSymbol() == 12)
 		return "Q";
-	if(getSymbol() == 11)
+	if (getSymbol() == 11)
 		return "J";
-	if(getSymbol() == 10)
+	if (getSymbol() == 10)
 		return "10";
-	if(getSymbol() != 1)
+	if (getSymbol() != 1)
 	{
 		int sym = getSymbol();
 		stringstream ss;

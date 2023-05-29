@@ -17,13 +17,13 @@ int CardStyle::getCombinationSize() const
 
 void CardStyle::setCards(Card cards[])
 {
-    for(int i = 0; i < 5; ++i)
+    for (int i = 0; i < 5; ++i)
         this->cards[i] = cards[i];
 }
 
 void CardStyle::generateCombinations()
 {
-    // æš´åŠ›è§£ï¼Œç°¡å–®ï¼Œã€Œå¿«é€Ÿã€æœ€ä½³æ¼”ç®—æ³•ï¼Œåˆä¸ç‡’è…¦ï¼Œè®šï¼
+    // ¼É¤O¸Ñ¡AÂ²³æ¡A¡u§Ö³t¡v³Ì¨Îºtºâªk¡A¤S¤£¿N¸£¡AÆg¡I
     arr[0][0] = cards[0];
     arr[0][1] = cards[1];
     arr[0][2] = cards[2];
@@ -87,10 +87,10 @@ void CardStyle::generateCombinations()
 
 void CardStyle::checkSuper()
 {
-    for(int i = 0; i < 5; ++i)
-        if(arr[0][i].getCard() < 11)
+    for (int i = 0; i < 5; ++i)
+        if (arr[0][i].getCard() < 11)
             return;
-    for(int i = 0; i < 5; ++i)
+    for (int i = 0; i < 5; ++i)
         final[i] = arr[0][i];
     haveFinal = 1;
     cStyle = 4;
@@ -100,22 +100,22 @@ void CardStyle::checkTwo()
 {
     Card passComb[10][5];
     int num__comb = 0;
-    for (int i = 0; i < 10; i++) 
+    for (int i = 0; i < 10; i++)
     {
         int sum = 0;
         int sum2 = 0;
-        for (int j = 0; j < 3; j++) 
+        for (int j = 0; j < 3; j++)
         {
-            if(int(arr[i][j].getCard()) > 10)
+            if (int(arr[i][j].getCard()) > 10)
             {
                 sum += 10;
                 continue;
             }
             sum += arr[i][j].getCard();
         }
-        for(int j = 3; j < 5; j++)
+        for (int j = 3; j < 5; j++)
         {
-            if(int(arr[i][j].getCard()) > 10)
+            if (int(arr[i][j].getCard()) > 10)
             {
                 sum2 += 10;
                 continue;
@@ -124,7 +124,7 @@ void CardStyle::checkTwo()
         }
         if (sum % 10 == 0 && sum2 % 10 == 0)
         {
-            for(int j = 0; j < 5; j++)
+            for (int j = 0; j < 5; j++)
                 final[j] = arr[i][j];
             haveFinal = 1;
             cStyle = 3;
@@ -137,12 +137,12 @@ void CardStyle::checkOne()
     Card passComb[10][5];
     int num__comb = 0;
 
-    for (int i = 0; i < 10; i++) 
+    for (int i = 0; i < 10; i++)
     {
         int sum = 0;
         for (int j = 0; j < 3; j++)
         {
-            if(int(arr[i][j].getCard()) > 10)
+            if (int(arr[i][j].getCard()) > 10)
             {
                 sum += 10;
                 continue;
@@ -157,63 +157,62 @@ void CardStyle::checkOne()
         }
     }
 
-    // ä»£è¡¨ç„¡å¦
-    if(num__comb == 0)
+    // ¥NªíµL§¬
+    if (num__comb == 0)
         return;
 
-    if(num__comb > 1)
+    if (num__comb > 1)
     {
         int maxi = 0;
-        for(int i = 1; i < num__comb; ++i)
+        for (int i = 1; i < num__comb; ++i)
         {
-            if((passComb[i][3].getSymbol() + passComb[i][4].getSymbol())%10 > (passComb[maxi][3].getSymbol() + passComb[maxi][4].getSymbol())%10)
+            if ((passComb[i][3].getSymbol() + passComb[i][4].getSymbol()) % 10 > (passComb[maxi][3].getSymbol() + passComb[maxi][4].getSymbol()) % 10)
                 maxi = i;
         }
-        for(int i = 0; i < 5; ++i)
+        for (int i = 0; i < 5; ++i)
             final[i] = passComb[maxi][i];
         haveFinal = 1;
         cStyle = 2;
         return;
     }
-    for(int i = 0; i < 5; ++i)
+    for (int i = 0; i < 5; ++i)
         final[i] = passComb[0][i];
     haveFinal = 1;
     cStyle = 2;
 }
-
 void CardStyle::checkPoor()
 {
     /*
-        ç›´æ¥å­˜é€²å»ï¼Œä¸ç®¡ç„¡å¦é‚„æ˜¯çƒé¾çš„ç‰Œçµ„éƒ½æ˜¯ä¸€æ¨£ï¼Œ
-        æœ€å¾Œå†åˆ¤æ–·æ˜¯ç„¡å¦é‚„æ˜¯çƒé¾ï¼Œé€™ç¨®æ–¹æ³•å¯ä»¥æå‡æ•ˆç‡
-    */ 
-    for(int i = 0; i < 5; ++i)
+        ª½±µ¦s¶i¥h¡A¤£ºŞµL§¬ÁÙ¬O¯QÀsªºµP²Õ³£¬O¤@¼Ë¡A
+        ³Ì«á¦A§PÂ_¬OµL§¬ÁÙ¬O¯QÀs¡A³oºØ¤èªk¥i¥H´£¤É®Ä²v
+    */
+    for (int i = 0; i < 5; ++i)
         final[i] = arr[0][i];
-    for(int i = 0; i < 5; i++)
+    for (int i = 0; i < 5; i++)
     {
-        if(int(arr[0][i].getCard()) > 10)
+        if (int(arr[0][i].getCard()) > 10)
         {
             haveFinal = 1;
             cStyle = 1;
         }
     }
-    if(!haveFinal)
+    if (!haveFinal)
         cStyle = 0;
 }
 
 void CardStyle::checkStyle()
 {
     checkSuper();
-    if(!haveFinal)
+    if (!haveFinal)
     {
         checkTwo();
-        if(!haveFinal)
+        if (!haveFinal)
         {
             checkOne();
-            if(!haveFinal)
+            if (!haveFinal)
                 checkPoor();
         }
-        
+
     }
 }
 
@@ -234,14 +233,14 @@ Card* CardStyle::getCards()
 
 void CardStyle::print()
 {
-    for(int i = 0; i < 10; ++i)
+    for (int i = 0; i < 10; ++i)
     {
-        for(int j = 0; j < 5; ++j)
+        for (int j = 0; j < 5; ++j)
             cout << arr[i][j].getCard() << " ";
         cout << endl;
     }
     cout << "------------------------------\n";
-    for(int i = 0; i < 5; ++i)
+    for (int i = 0; i < 5; ++i)
         cout << final[i].getCard() << " ";
     cout << endl;
     cout << "cStyle: " << cStyle << endl;

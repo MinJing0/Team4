@@ -78,16 +78,16 @@ void Game::show(Card* player)
 void Game::compare(Player& p)
 {
     p.setWin(0);
-    if(p.getCstyle() > pc.getCstyle())
+    if (p.getCstyle() > pc.getCstyle())
     {
         p.setWin(1);
         return;
     }
 
-    if(p.getCstyle() == pc.getCstyle() && p.getCstyle() == 2)
+    if (p.getCstyle() == pc.getCstyle() && p.getCstyle() == 2)
     {
-        Card *cardp = new Card[5];
-        Card *cardpc = new Card[5];
+        Card* cardp = new Card[5];
+        Card* cardpc = new Card[5];
         cardp = p.getCards();
         cardpc = pc.getCards();
 
@@ -98,26 +98,26 @@ void Game::compare(Player& p)
         a[2] = cardpc[3].getCard();
         a[3] = cardpc[4].getCard();
 
-        for(int i = 0; i < 4; ++i)
-            if(a[i] > 10)
+        for (int i = 0; i < 4; ++i)
+            if (a[i] > 10)
                 a[i] = 10;
 
         s1 = (a[0] + a[1]) % 10;
         s2 = (a[2] + a[3]) % 10;
 
-        if(s1 > s2)
+        if (s1 > s2)
         {
             p.setWin(1);
             return;
         }
-        else if(s1 < s2)
+        else if (s1 < s2)
             return;
     }
-    
-    if(p.getCstyle() == pc.getCstyle())
+
+    if (p.getCstyle() == pc.getCstyle())
     {
-        Card *cardp = new Card[5];
-        Card *cardpc = new Card[5];
+        Card* cardp = new Card[5];
+        Card* cardpc = new Card[5];
         cardp = p.getCards();
         cardpc = pc.getCards();
 
@@ -125,14 +125,14 @@ void Game::compare(Player& p)
         maxp = cardp[0].getCard();
         maxpc = cardpc[0].getCard();
 
-        for(int i = 1; i < 5; ++i)
+        for (int i = 1; i < 5; ++i)
         {
-            if(cardp[i].getCard() > maxp)
+            if (cardp[i].getCard() > maxp)
                 maxp = cardp[i].getCard();
-            if(cardpc[i].getCard() > maxpc)
+            if (cardpc[i].getCard() > maxpc)
                 maxpc = cardpc[i].getCard();
         }
-        if(maxp > maxpc)
+        if (maxp > maxpc)
             p.setWin(1);
     }
 }

@@ -1,4 +1,4 @@
-#include"Player.h"
+﻿#include"Player.h"
 
 Player::Player()
 {
@@ -7,7 +7,7 @@ Player::Player()
 }
 void Player::setCards(Card* cards)
 {
-    for(int i = 0; i < 5; ++i)
+    for (int i = 0; i < 5; ++i)
         this->cards[i] = cards[i];
 }
 

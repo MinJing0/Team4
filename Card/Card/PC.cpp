@@ -2,12 +2,12 @@
 
 PC::PC()
 {
-	this->cards = new Card[5];
+    this->cards = new Card[5];
 }
 
 void PC::setCards(Card* cards)
 {
-    for(int i = 0; i < 5; ++i)
+    for (int i = 0; i < 5; ++i)
         this->cards[i] = cards[i];
 }
 
