@@ -12,10 +12,6 @@ void Game::swapByReference(Card& c1, Card& c2)
     c1 = c2;
     c2 = buffer;
 }
-int Game::getRound()
-{
-	return round;
-}
 
 void Game::createDeck()
 {
@@ -37,7 +33,7 @@ void Game::Shuffle()
         swapByReference(cards[i], cards[j]);
     }
 }
-void Game::distribute()
+void Game::giveCard()
 {
     Card* c = new Card[5];
     int k = 0;
@@ -49,14 +45,14 @@ void Game::distribute()
             k++;
         }
         player[j].setCards(c);
-    }//發給兩名電腦
+    }
 
     for (int i = 0; i < 5; ++i)
     {
         c[i] = cards[k];
         k++;
     }
-    pc.setCards(c);//發給電腦
+    pc.setCards(c);
 }
 
 Card* Game::getWinner()
@@ -65,7 +61,7 @@ Card* Game::getWinner()
 }
 void Game::show(Card* player)
 {
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 5; i++)
     {
         cout << "Symbol: " << player[i].getSymbol() << endl;
         cout << "Suit: " << player[i].getSuit() << endl;
