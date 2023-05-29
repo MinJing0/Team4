@@ -55,11 +55,6 @@ void Game::giveCard()
     pc.setCards(c);
 }
 
-Card* Game::getWinner()
-{
-    return winner;
-}
-
 Player& Game::getPlayer(int index)
 {
     return player[index];
@@ -80,28 +75,64 @@ void Game::show(Card* player)
     cout << "----------" << endl;
 }
 
-//void Game::compare()
-//{
-//
-//}
-//void Game::calculatePlayer(Player player)
-//{
-//    int modNum = 0;
-//    int sumOfThree = player.getCards()[0].getIntSymbol() + player.getCards()[1].getIntSymbol() + player.getCards()[2].getIntSymbol();
-//    int LastTwo = player.getCards()[3].getIntSymbol() + player.getCards()[4].getIntSymbol();
-//    int sumOfAll = player.getCards()[0].getIntSymbol() + player.getCards()[1].getIntSymbol() + player.getCards()[2].getIntSymbol()+player.getCards()[3].getIntSymbol() + player.getCards()[4].getIntSymbol();
-//    
-//    if (sumOfThree % 10 == 0)
-//    {
-//        if (LastTwo % 10 == 0)
-//            player.compareSize = 5;
-//        else
-//        {
-//            modNum = sumOfAll % 10;
-//            
-//        }
-//            
-//    }
-//    else
-//
-//}
+void Game::compare(Player& p)
+{
+    p.setWin(0);
+    if(p.getCstyle() > pc.getCstyle())
+    {
+        p.setWin(1);
+        return;
+    }
+
+    if(p.getCstyle() == pc.getCstyle() && p.getCstyle() == 2)
+    {
+        Card *cardp = new Card[5];
+        Card *cardpc = new Card[5];
+        cardp = p.getCards();
+        cardpc = pc.getCards();
+
+        int s1, s2;
+        int a[4];
+        a[0] = cardp[3].getCard();
+        a[1] = cardp[4].getCard();
+        a[2] = cardpc[3].getCard();
+        a[3] = cardpc[4].getCard();
+
+        for(int i = 0; i < 4; ++i)
+            if(a[i] > 10)
+                a[i] = 10;
+
+        s1 = (a[0] + a[1]) % 10;
+        s2 = (a[2] + a[3]) % 10;
+
+        if(s1 > s2)
+        {
+            p.setWin(1);
+            return;
+        }
+        else if(s1 < s2)
+            return;
+    }
+    
+    if(p.getCstyle() == pc.getCstyle())
+    {
+        Card *cardp = new Card[5];
+        Card *cardpc = new Card[5];
+        cardp = p.getCards();
+        cardpc = pc.getCards();
+
+        double maxp, maxpc;
+        maxp = cardp[0].getCard();
+        maxpc = cardpc[0].getCard();
+
+        for(int i = 1; i < 5; ++i)
+        {
+            if(cardp[i].getCard() > maxp)
+                maxp = cardp[i].getCard();
+            if(cardpc[i].getCard() > maxpc)
+                maxpc = cardpc[i].getCard();
+        }
+        if(maxp > maxpc)
+            p.setWin(1);
+    }
+}
