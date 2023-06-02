@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <cctype>
 using namespace std;
 
 #include "Print.h"
@@ -96,4 +97,37 @@ void Print::win(Player& p, int index)
         cout << "Player " << index << " 你贏了\n";
     else
         cout << "Player " << index << " 你輸了\n";
+}
+
+void Print::stakeMoney(Player &p)
+{
+    string money;
+    bool allDig = true;
+    cout << "你目前手頭上還有 $" << p.getMoney() << endl;
+    cout << "請輸入你的賭金: ";
+    getline(cin, money);
+    
+    for (int i = 0; i < money.size(); ++i)
+    {
+        if (!isdigit(money[i]))
+        {
+            allDig = false;
+            break;
+        }
+    }
+
+    while (!allDig)
+    {
+        allDig = true;
+        cout << "請再輸入一次金額(只能輸入數字且不能包含\"空格\"): ";
+        getline(cin, money);
+        for (int i = 0; i < money.size(); ++i)
+        {
+            if (!isdigit(money[i]))
+            {
+                allDig = false;
+                break;
+            }
+        }
+    }
 }

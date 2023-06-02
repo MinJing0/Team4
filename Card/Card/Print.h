@@ -14,6 +14,7 @@ public:
     void playerHandCard(Player&, int, Card*);
     void pcHandCard(PC&, Card*);
     void win(Player&, int);
+    void stakeMoney(Player&);
 };
 
 #endif

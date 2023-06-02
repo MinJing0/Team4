@@ -8,9 +8,9 @@ int main()
 {
 	Game game;
 	// 顯示歡迎及規則
-	game.welcome();
+	/*game.welcome();
 	game.gamePlay();
-	game.rule();
+	game.rule();*/
 
 	// 初始化桌面(拿到整副撲克牌)
 	game.createDeck();
@@ -67,10 +67,13 @@ int main()
 	// 將牌型存到電腦物件裡頭
 	game.getPC().setCstyle(cs.getCstyle());
 
+	// 顯示手牌以及輸入賭金
 	for (int i = 0; i < 3; ++i)
 	{
+		int money;
 		c = game.getPlayer(i).getCards();
 		game.playerHandCard(game.getPlayer(i), i, c);
+		game.stakeMoney(game.getPlayer(i));
 	}
 
 	c = game.getPC().getCards();
