@@ -4,6 +4,7 @@ Player::Player()
 {
     this->cards = new Card[5];
     win = 0;
+    money = 10000;
 }
 void Player::setCards(Card* cards)
 {
@@ -34,4 +35,14 @@ bool Player::getWin()
 void Player::setWin(bool w)
 {
     win = w;
+}
+
+void Player::setMoney(int money)
+{
+    this->money = money;
+}
+
+int Player::getMoney()
+{
+    return money;
 }

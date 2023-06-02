@@ -8,6 +8,7 @@ private:
 	Card * cards;
 	int cStyle;
 	bool win;
+	int money;
 	
 public:
 	Player();
@@ -17,5 +18,7 @@ public:
 	Card* getCards();
 	bool getWin();
 	void setWin(bool);
+	void setMoney(int);
+	int getMoney();
 };
 #endif
