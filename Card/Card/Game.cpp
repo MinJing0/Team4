@@ -65,19 +65,13 @@ PC& Game::getPC()
     return pc;
 }
 
-void Game::show(Card* player)
-{
-    for (int i = 0; i < 5; i++)
-    {
-        cout << "Symbol: " << player[i].getSymbol() << endl;
-        cout << "Suit: " << player[i].getSuit() << endl;
-    }
-    cout << "----------" << endl;
-}
-
 void Game::compare(Player& p)
 {
     p.setWin(0);
+
+    if (p.getCstyle() == 0)
+        return;
+
     if (p.getCstyle() > pc.getCstyle())
     {
         p.setWin(1);

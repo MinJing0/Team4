@@ -15,6 +15,11 @@ public:
     void pcHandCard(PC&, Card*);
     void win(Player&, int);
     void stakeMoney(Player&);
+    void showStakeMoney(Player&);
+    void notHaveMoney(int);
+    void isExit(int);
+    void lastMoney(Player&);
+    void rank(Player&, Player&, Player&);
 };
 
 #endif

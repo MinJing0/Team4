@@ -7,7 +7,7 @@
 #include"PC.h"
 using namespace std;
 
-class Game: public Print
+class Game : public Print
 {
 private:
 	Player player[3];
@@ -23,7 +23,6 @@ public:
 	Player& getPlayer(int);
 	PC& getPC();
 	void compare(Player&);
-	void show(Card*);
 };
 
 #endif

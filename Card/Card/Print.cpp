@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <cctype>
+#include <sstream>
 using namespace std;
 
 #include "Print.h"
@@ -42,8 +43,7 @@ void Print::rule()
     cout << "贏牌賠率: \n";
     cout << "\n烏龍（不帶公牌）：直接輸掉本局\n";
     cout << "帶公烏龍：注1賠2\n";
-    cout << "有妞（小點）：注1賠2\n";
-    cout << "有妞（大點）：注1賠3\n";
+    cout << "有妞：注1賠3\n";
     cout << "妞妞：注1賠4\n";
     cout << "終極妞妞：注1賠6\n";
     cout << "-----------------------------------------------------\n";
@@ -94,40 +94,247 @@ void Print::win(Player& p, int index)
 {
     index++;
     if (p.getWin())
-        cout << "Player " << index << " 你贏了\n";
+        cout << "Player " << index << " 你贏了 ";
     else
-        cout << "Player " << index << " 你輸了\n";
+        cout << "Player " << index << " 你輸了 ";
 }
 
-void Print::stakeMoney(Player &p)
+void Print::stakeMoney(Player& p)
 {
     string money;
-    bool allDig = true;
+    /* status
+     * 1: 成功
+     * 2: 判斷未知字元
+     * 3: 金額不超過 1000
+     * 4: 超過自己的金額
+    */
+    int status;
+    int sta2 = false;
+    int sMoney = 0;
+
     cout << "你目前手頭上還有 $" << p.getMoney() << endl;
-    cout << "請輸入你的賭金: ";
+    cout << "請輸入你的賭金(輸入 exit 退出遊戲): ";
     getline(cin, money);
-    
+
+    if (money == "exit"||money == "Exit"||money == "EXIT")
+    {
+        p.setInPlay(false);
+        cout << "\n你已經成功退出遊戲" << endl;
+        cout << "(按 Enter 繼續)" << endl;
+        cin.get();
+        return;
+    }
+
     for (int i = 0; i < money.size(); ++i)
     {
         if (!isdigit(money[i]))
         {
-            allDig = false;
+            sta2 = true;
+            status = 2;
             break;
         }
     }
 
-    while (!allDig)
+    stringstream ss;
+    if (!sta2)
     {
-        allDig = true;
-        cout << "請再輸入一次金額(只能輸入數字且不能包含\"空格\"): ";
-        getline(cin, money);
-        for (int i = 0; i < money.size(); ++i)
+        int m;
+        ss << money;
+        ss >> m;
+
+        if (m < 1000)
+            status = 3;
+        else if (m > p.getMoney())
+            status = 4;
+        else
         {
-            if (!isdigit(money[i]))
+            status = 1;
+            sMoney = m;
+        }
+    }
+
+    while (status != 1)
+    {
+        if (status == 2)
+        {
+            cout << "\n判斷未知指令\n";
+            cout << "請再輸入一次金額(只能輸入數字且不能包含\"空格\" ; 輸入 exit 退出遊戲): ";
+            getline(cin, money);
+            if (money == "exit" || money == "Exit" || money == "EXIT")
             {
-                allDig = false;
-                break;
+                p.setInPlay(false);
+                cout << "\n你已經成功退出遊戲" << endl;
+                cout << "(按 Enter 繼續)" << endl;
+                cin.get();
+                return;
+            }
+
+            sta2 = false;
+            for (int i = 0; i < money.size(); ++i)
+            {
+                if (!isdigit(money[i]))
+                {
+                    sta2 = true;
+                    break;
+                }
+            }
+            if (!sta2)
+            {
+                int m;
+                ss.clear();
+                ss << money;
+                ss >> m;
+                if (m < 1000)
+                    status = 3;
+                else if (m > p.getMoney())
+                    status = 4;
+                else
+                {
+                    status = 1;
+                    sMoney = m;
+                }
             }
         }
+        else if (status == 3)
+        {
+            cout << "\n請再輸入一次金額必須大於(包含)1000 (輸入 exit 退出遊戲): ";
+            getline(cin, money);
+
+            if (money == "exit"||money == "Exit"||money == "EXIT")
+            {
+                p.setInPlay(false);
+                cout << "\n你已經成功退出遊戲" << endl;
+                cout << "(按 Enter 繼續)" << endl;
+                cin.get();
+                return;
+            }
+
+            sta2 = false;
+            for (int i = 0; i < money.size(); ++i)
+            {
+                if (!isdigit(money[i]))
+                {
+                    status = 2;
+                    sta2 = true;
+                    break;
+                }
+            }
+
+            if (!sta2)
+            {
+                int m;
+                ss.clear();
+                ss << money;
+                ss >> m;
+                if (m < 1000)
+                {
+                    status = 3;
+                }
+                else if (m > p.getMoney())
+                    status = 4;
+                else
+                {
+                    status = 1;
+                    sMoney = m;
+                }
+            }
+        }
+        else if (status == 4)
+        {
+            cout << "\n輸入金額超過自己的戶頭! \n";
+            cout << "請再輸入一次金額必須大於(包含)1000 (輸入 exit 退出遊戲): ";
+            getline(cin, money);
+
+            if (money == "exit"||money == "Exit"||money == "EXIT")
+            {
+                p.setInPlay(false);
+                cout << "\n你已經成功退出遊戲" << endl;
+                cout << "(按 Enter 繼續)" << endl;
+                cin.get();
+                return;
+            }
+
+            sta2 = false;
+            for (int i = 0; i < money.size(); ++i)
+            {
+                if (!isdigit(money[i]))
+                {
+                    status = 2;
+                    sta2 = true;
+                    break;
+                }
+            }
+
+            if (!sta2)
+            {
+                int m;
+                ss.clear();
+                ss << money;
+                ss >> m;
+                if (m < 1000)
+                {
+                    status = 3;
+                }
+                else if (m > p.getMoney())
+                    status = 4;
+                else
+                {
+                    status = 1;
+                    sMoney = m;
+                }
+            }
+        }
+    }
+    p.setStakeMoney(sMoney);
+}
+
+void Print::showStakeMoney(Player& p)
+{
+    cout << "賭注金額: " << p.getStakeMoney() << endl;
+}
+
+void Print::notHaveMoney(int index)
+{
+    cout << "Player " << index + 1 << " 已沒有錢參加遊戲 ";
+}
+
+void Print::isExit(int index)
+{
+    cout << "Player " << index + 1 << " 已終止繼續遊戲 ";
+}
+
+void Print::lastMoney(Player& p)
+{
+    cout << "剩餘金額: " << p.getMoney() << endl;
+}
+
+void Print::rank(Player& p1, Player& p2, Player& p3)
+{
+    int iarr[3];
+    Player arr[3];
+    arr[0] = p1;
+    arr[1] = p2;
+    arr[2] = p3;
+
+    iarr[0] = 1;
+    iarr[1] = 2;
+    iarr[2] = 3;
+
+    for (int i = 0; i < 2; ++i)
+        for (int j = i + 1; j < 3; ++j)
+            if (arr[i].getMoney() > arr[j].getMoney())
+            {
+                Player pbuffer;
+                int ibuffer;
+                pbuffer = arr[i];
+                arr[i] = arr[j];
+                arr[j] = pbuffer;
+                ibuffer = iarr[i];
+                iarr[i] = iarr[j];
+                iarr[j] = ibuffer;
+            }
+    for (int i = 0; i < 3; ++i)
+    {
+        cout << "rank" << i + 1 << " -> Player " << iarr[2-i] << endl;
     }
 }

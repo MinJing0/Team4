@@ -5,11 +5,13 @@
 class Player
 {
 private:
-	Card * cards;
+	Card* cards;
 	int cStyle;
 	bool win;
 	int money;
-	
+	int stakeMoney;
+	bool inPlay;
+
 public:
 	Player();
 	void setCards(Card*);
@@ -20,5 +22,11 @@ public:
 	void setWin(bool);
 	void setMoney(int);
 	int getMoney();
+	void setStakeMoney(int);
+	int getStakeMoney();
+	void setInPlay(bool);
+	bool getInPlay();
+	void winMoney();
+	void loseMoney();
 };
 #endif

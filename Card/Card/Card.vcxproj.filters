@@ -33,9 +33,6 @@
     <ClCompile Include="Print.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="CardStyle.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>

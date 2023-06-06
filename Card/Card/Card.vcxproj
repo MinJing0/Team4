@@ -134,7 +134,6 @@
     <ClCompile Include="PC.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Print.cpp" />
-    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />

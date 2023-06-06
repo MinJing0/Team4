@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
 
 #include "CardStyle.h"
@@ -23,7 +23,7 @@ void CardStyle::setCards(Card cards[])
 
 void CardStyle::generateCombinations()
 {
-    // �ɤO�ѡA²��A�u�ֳt�v�̨κt��k�A�S���N���A�g�I
+    // 暴力解，簡單，「快速」最佳演算法，又不燒腦，讚！
     arr[0][0] = cards[0];
     arr[0][1] = cards[1];
     arr[0][2] = cards[2];
@@ -157,10 +157,9 @@ void CardStyle::checkOne()
         }
     }
 
-    // �N���L��
+    // 代表無妞
     if (num__comb == 0)
         return;
-
     if (num__comb > 1)
     {
         int maxi = 0;
@@ -183,8 +182,8 @@ void CardStyle::checkOne()
 void CardStyle::checkPoor()
 {
     /*
-        �����s�i�h�A���޵L���٬O�Q�s���P�ճ��O�@�ˡA
-        �̫�A�P�_�O�L���٬O�Q�s�A�o�ؤ�k�i�H���ɮĲv
+        直接存進去，不管無妞還是烏龍的牌組都是一樣，
+        最後再判斷是無妞還是烏龍，這種方法可以提升效率
     */
     for (int i = 0; i < 5; ++i)
         final[i] = arr[0][i];
